@@ -15,11 +15,14 @@ mysql_select_db ('repas', $base) ;
 
 <?php
     //Début du formulaire
-    echo '<form action="repas.php" method="post">';
+    echo '<form action="repas.php" method="post" class="form-horizontal"><legend>Entrer un nouveau plat...</legend>';
 
 
-        // création de la liste déroulante pays
-        echo '<select name="pays">';
+        // Création de la liste déroulante pays
+        echo '<div class="control-group">
+                <label class="control-label" for="pa">Lieu d&#146;origine</label>
+                <div class="controls">';
+        echo '<select name="pays" id="pa">';
             // Requête sql pour récupérer les infos pour le pays
             $sql = "SELECT * FROM `Pays` WHERE 1 ";
 
@@ -32,12 +35,13 @@ mysql_select_db ('repas', $base) ;
             {
                 echo '<option value='.$data['idPays'],'>'.$data['Pays'].'</option>';
             }
-        echo '</select>';
+        echo '</select></div></div>';
 
-
-
-        // création de la liste déroulante type
-        echo '<select name="type">';
+        // Création de la liste déroulante type
+        echo '<div class="control-group">
+                <label class="control-label" for="ty">Type du plat</label>
+                <div class="controls"> ';
+        echo '<select name="type" id="ty">';
             // Requête sql pour récupérer les infos pour le pays
             $sql = "SELECT * FROM `Type` ";
 
@@ -48,11 +52,50 @@ mysql_select_db ('repas', $base) ;
             echo '<option value=0>....Choix du type de repas....</option>';
             while ($data = mysql_fetch_array($req))
             {
-                echo '<option value='.$data['idPays'],'>'.$data['type'].'</option>';
+                echo '<option value='.$data['idType'],'>'.$data['type'].'</option>';
             }
-            mysql_free_result ($req);
-            mysql_close ();
-        echo '</select>';
+        echo '</select></div></div>';
+
+
+        // Création du champs pour entrer le nom du repas
+        echo '<div class="control-group">
+                <label class="control-label" for="re">Nom du repas</label>
+                <div class="controls">
+                    <input type="text" id="re" name="repas" placeholder="Nom du repas">
+                </div>
+            </div>';
+
+        // Création de la section pour choisir si le plat est vététarien ou non
+        echo '<div class="control-group">
+                <label class="control-label" >Ce plat est-il végétarien ou normal?</label>
+                <div class="controls">
+                    <label class="radio inline">
+                        <input type="radio" name="vege" id="inlineOptionsRadios1" value="true" >
+                        Plat végétarien
+                    </label>
+                    <label class="radio inline">
+                        <input type="radio" name="vege" id="inlineOptionsRadios2" value="false" checked>
+                        Plat normal
+                    </label>
+                </div>
+            </div>';
+
+        // Création du champs pour entrer le prix du repas
+        echo '<div class="control-group">
+                        <label class="control-label" for="pr">Prix</label>
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <input type="text" id="pr" name="prix" placeholder="Prix">
+                                <span class="add-on">$</span>
+                            </div>
+                        </div>
+                    </div>';
+
+        // Création du bouton valider
+        echo '<div class="form-actions">
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+                <button type="button" class="btn btn-small">Annuler</button>
+            </div>';
 
 
 
