@@ -11,9 +11,29 @@ mysql_select_db ('repas', $base) ;
 </head>
 
 <body>
-
-
 <?php
+    if(isset($_REQUEST['OK']))
+    {
+        if($_REQUEST['pays'] != 0 && $_REQUEST['type'] != 0 && $_REQUEST['repas'] != "")
+        {
+
+            echo "pays diff de 0";
+
+        }
+        else
+        {
+            echo "pays = 0";
+        }
+
+
+
+
+
+
+
+    }
+
+
     //Début du formulaire
     echo '<form action="repas.php" method="post" class="form-horizontal"><legend>Entrer un nouveau plat...</legend>';
 
@@ -93,15 +113,13 @@ mysql_select_db ('repas', $base) ;
 
         // Création du bouton valider
         echo '<div class="form-actions">
-                <button type="submit" class="btn btn-primary">Envoyer</button>
-                <button type="button" class="btn btn-small">Annuler</button>
+                <button type="submit" name="OK" class="btn btn-primary">Envoyer</button>
+                <button type="submit" name="Cancel" class="btn btn-small">Annuler</button>
             </div>';
 
 
 
     echo '</form>';
-
-
 
 
     // Fermeture de la connection pour libérer les ressources
