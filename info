@@ -1,0 +1,26 @@
+
+formulaire liste déroulante
+
+<form action="repas.php" method="post">
+
+        <!-- on déclare un champs select, pour affichier la liste de choix -->
+
+        <select name="Pays">
+            <option value=""> ----- Choisir ----- </option>
+            <option value="it"> Italie </option>
+            <option value="ca"> Canada </option>
+            <option value="me"> Mexique </option>
+            <option value="eu"> États-Unis </option>
+            <option value="pe"> Pérou </option>
+            <option value="th"> Thaïlande </option>
+            <option value="ja"> Japon </option>
+            <option value="fr"> France </option>
+        </select>
+        <select name="Type">
+
+        </select>
+
+
+        <!-- un bouton pour valider -->
+        <input type="submit" value="valider" name="OK">
+    </form>
