@@ -14,23 +14,18 @@ mysql_select_db ('repas', $base) ;
 <?php
     if(isset($_REQUEST['OK']))
     {
-        if($_REQUEST['pays'] != 0 && $_REQUEST['type'] != 0 && $_REQUEST['repas'] != "")
+        if($_REQUEST['pays'] != 0 && $_REQUEST['type'] != 0 && $_REQUEST['repas'] != "" && is_numeric($_REQUEST['prix']))
         {
+            //echo $_REQUEST['pays']."et".$_REQUEST['type'];
 
-            echo "pays diff de 0";
+            $sql = 'INSERT INTO `Repas`(idPays, idType, repas, vege, prix) VALUES ('.$_REQUEST["pays"].','.$_REQUEST["type"].',"'.$_REQUEST["repas"].'",'.$_REQUEST["vege"].','.$_REQUEST["prix"].')';
+            $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
         }
         else
         {
-            echo "pays = 0";
+            echo "Il manque des informations. Attention *** Les prix nécisite un '.' et non ','";
         }
-
-
-
-
-
-
-
     }
 
 
@@ -105,7 +100,7 @@ mysql_select_db ('repas', $base) ;
                         <label class="control-label" for="pr">Prix</label>
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <input type="text" id="pr" name="prix" placeholder="Prix">
+                                <input type="number" id="pr" name="prix" placeholder="Prix">
                                 <span class="add-on">$</span>
                             </div>
                         </div>
