@@ -1,26 +1,23 @@
+Les requêtes SQL :
 
-formulaire liste déroulante
+Entré une donnée :
+$sql = 'INSERT INTO `Repas`(idPays, idType, repas, vege, prix) VALUES ('.$_REQUEST["pays"].','.$_REQUEST["type"].',"'.$_REQUEST["repas"].'",'.$_REQUEST["vege"].','.$_REQUEST["prix"].')';
 
-<form action="repas.php" method="post">
-
-        <!-- on déclare un champs select, pour affichier la liste de choix -->
-
-        <select name="Pays">
-            <option value=""> ----- Choisir ----- </option>
-            <option value="it"> Italie </option>
-            <option value="ca"> Canada </option>
-            <option value="me"> Mexique </option>
-            <option value="eu"> États-Unis </option>
-            <option value="pe"> Pérou </option>
-            <option value="th"> Thaïlande </option>
-            <option value="ja"> Japon </option>
-            <option value="fr"> France </option>
-        </select>
-        <select name="Type">
-
-        </select>
+Aller chercher les infos du pays et du type :
+$sql = "SELECT * FROM `Pays` WHERE 1 ";
+$sql = "SELECT * FROM `Type` ";
 
 
-        <!-- un bouton pour valider -->
-        <input type="submit" value="valider" name="OK">
-    </form>
+INSERT INTO 'Type' (Type) VALUES ('Entrée');INSERT INTO 'Type (type) VALUES ('Repas principal');INSERT INTO 'Type (type) VALUES ('Dessert');
+
+
+INSERT INTO 'Type' ('Pays','population') VALUES ('Italie',59464644);
+INSERT INTO 'Type' ('Pays','population') VALUES ('Canada',33476688);
+INSERT INTO 'Type' ('Pays','population') VALUES ('Mexique',112336538);
+INSERT INTO 'Type' ('Pays','population') VALUES ('États-Unis',314159265);
+INSERT INTO 'Type' ('Pays','population') VALUES ('Pérou',29907003);
+INSERT INTO 'Type' ('Pays','population') VALUES ('Thaïlande',66720153);
+INSERT INTO 'Type' ('Pays','population') VALUES ('Japon',127078679);
+INSERT INTO 'Type' ('Pays','population') VALUES ('France',65350000);
+
+
